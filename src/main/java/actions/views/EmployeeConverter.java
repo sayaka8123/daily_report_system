@@ -29,8 +29,8 @@ public class EmployeeConverter {
                         :ev.getAdminFlag() == AttributeConst.ROLE_ADMIN.getIntegerValue()
                                 ?JpaConst.ROLE_ADMIN
                                 :JpaConst.ROLE_GENERAL,
-                ev.getCreatedAT(),
-                ev.getUpdatedAT(),
+                ev.getCreatedAt(),
+                ev.getUpdatedAt(),
                 ev.getDeleteFlag() == null
                         ?null
                         :ev.getDeleteFlag() == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()
@@ -88,8 +88,8 @@ public class EmployeeConverter {
         e.setName(ev.getName());
         e.setPassword(ev.getPassword());
         e.setAdminFlag(ev.getAdminFlag());
-        e.setCreatedAt(ev.getCreatedAT());
-        e.setUpdatedAt(ev.getUpdatedAT());
+        e.setCreatedAt(ev.getCreatedAt());
+        e.setUpdatedAt(ev.getUpdatedAt());
         e.setDeleteFlag(ev.getDeleteFlag());
     }
 

@@ -46,12 +46,12 @@ public class EmployeeView {
     /**
      * 登録日時
      */
-    private LocalDateTime createdAT;
+    private LocalDateTime createdAt;
 
     /**
      * 更新日時
      */
-    private LocalDateTime updatedAT;
+    private LocalDateTime updatedAt;
 
     /**
      * 削除された従業員かどうか（現役：0、削除済み：1）
