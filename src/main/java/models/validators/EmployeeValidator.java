@@ -26,23 +26,23 @@ public class EmployeeValidator {
            List<String> errors = new ArrayList<String>();
 
            //社員番号のチェック
-    String codeError = validateCode(service, ev.getCode(), codeDuplicateCheckFlag);
-    if(!codeError.equals("")) {
-        errors.add(codeError);
-    }
+           String codeError = validateCode(service, ev.getCode(), codeDuplicateCheckFlag);
+           if(!codeError.equals("")) {
+              errors.add(codeError);
+           }
 
-    //氏名のチェック
-    String nameError = validateName(ev.getName());
-    if(!nameError.equals("")) {
-        errors.add(nameError);
-    }
+           //氏名のチェック
+           String nameError = validateName(ev.getName());
+          if(!nameError.equals("")) {
+             errors.add(nameError);
+          }
 
-    //パスワードのチェック
-    String passError = validatePassword(ev.getPassword(), passwordCheckFlag);
-    if(!passError.equals("")) {
-        errors.add(passError);
-    }
-    return errors;
+          //パスワードのチェック
+          String passError = validatePassword(ev.getPassword(), passwordCheckFlag);
+          if(!passError.equals("")) {
+             errors.add(passError);
+          }
+          return errors;
 
     }
     /**
@@ -61,10 +61,10 @@ public class EmployeeValidator {
 
         if(codeDuplicateCheckFlag) {
             //社員番号のの重複チェックを実施
-            long employeeCount = isDuplicateEmployee(service, code);
+            long employeesCount = isDuplicateEmployee(service, code);
 
             //同一社員番号が既に登録されている場合はエラーメッセージを返却
-            if(employeeCount > 0) {
+            if(employeesCount > 0) {
                 return MessageConst.E_EMP_CODE_EXIST.getMessage();
             }
         }
@@ -98,9 +98,9 @@ public class EmployeeValidator {
      * @param passwordCheckFlag パスワードの入力チェックを実施するかどうか(実施する:true 実施しない:false)
      * @return エラーメッセージ
      */
-    private static String validatePassword(String password, boolean passwoedCheckFlag) {
+    private static String validatePassword(String password, boolean passwordCheckFlag) {
       //入力チェックを実施 かつ 入力値がなければエラーメッセージを返却
-        if(passwoedCheckFlag && (password == null || password.equals(""))) {
+        if(passwordCheckFlag && (password == null || password.equals(""))) {
             return MessageConst.E_NOPASSWORD.getMessage();
         }
       //エラーがない場合は空文字を返却

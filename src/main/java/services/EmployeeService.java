@@ -28,7 +28,7 @@ public class EmployeeService extends ServiceBase {
                 .setMaxResults(JpaConst.ROW_PER_PAGE)
                 .getResultList();
 
-        return EmployeeConverter.toViewlist(employees);
+        return EmployeeConverter.toViewList(employees);
     }
     /**
      * 従業員テーブルのデータの件数を取得し、返却する
@@ -51,17 +51,16 @@ public class EmployeeService extends ServiceBase {
         Employee e = null;
         try {
 
-          //パスワードのハッシュ化
-        String pass = EncryptUtil.getPasswordEncrypt(plainPass, pepper);
+             //パスワードのハッシュ化
+            String pass = EncryptUtil.getPasswordEncrypt(plainPass, pepper);
 
-      //社員番号とハッシュ化済パスワードを条件に未削除の従業員を1件取得する
-        e = em.createNamedQuery(JpaConst.Q_EMP_GET_BY_CODE_AND_PASS, Employee.class)
-                .setParameter(JpaConst.JPQL_PARM_CODE, code)
-                .setParameter(JpaConst.JPQL_PARM_PASSWORD, pass)
-                .getSingleResult();
-    }catch(NoResultException ex) {
-
-    }
+            //社員番号とハッシュ化済パスワードを条件に未削除の従業員を1件取得する
+            e = em.createNamedQuery(JpaConst.Q_EMP_GET_BY_CODE_AND_PASS, Employee.class)
+                  .setParameter(JpaConst.JPQL_PARM_CODE, code)
+                  .setParameter(JpaConst.JPQL_PARM_PASSWORD, pass)
+                  .getSingleResult();
+        }catch(NoResultException ex) {
+        }
         return EmployeeConverter.toView(e);
     }
     /**
@@ -128,7 +127,7 @@ public class EmployeeService extends ServiceBase {
 
         boolean validateCode = false;
         if(!savedEmp.getCode().equals(ev.getCode())) {
-          //社員番号を更新する場合
+            //社員番号を更新する場合
             //社員番号についてのバリデーションを行う
             validateCode = true;
             //変更後の社員番号を設定する
@@ -146,14 +145,14 @@ public class EmployeeService extends ServiceBase {
         savedEmp.setName(ev.getName());//変更後の氏名を設定する
         savedEmp.setAdminFlag(ev.getAdminFlag());//変更後の管理者フラグを設定する
 
-      //更新日時に現在時刻を設定する
+        //更新日時に現在時刻を設定する
         LocalDateTime today = LocalDateTime.now();
         savedEmp.setUpdatedAt(today);
 
-      //更新内容についてバリデーションを行う
+        //更新内容についてバリデーションを行う
         List<String> errors = EmployeeValidator.validate(this, savedEmp, validateCode, validatePass);
 
-      //バリデーションエラーがなければデータを更新する
+        //バリデーションエラーがなければデータを更新する
         if(errors.size() == 0) {
             update(savedEmp);
         }
@@ -167,10 +166,10 @@ public class EmployeeService extends ServiceBase {
  * @param id
  */
 public void destroy(Integer id) {
-  //idを条件に登録済みの従業員情報を取得する
+    //idを条件に登録済みの従業員情報を取得する
     EmployeeView savedEmp = findOne(id);
 
-  //更新日時に現在時刻を設定する
+    //更新日時に現在時刻を設定する
     LocalDateTime today = LocalDateTime.now();
     savedEmp.setUpdatedAt(today);
 

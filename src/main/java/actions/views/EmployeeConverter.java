@@ -70,7 +70,7 @@ public class EmployeeConverter {
      * @param list DTOモデルのリスト
      * @return Viewモデルのリスト
      */
-    public static List<EmployeeView> toViewlist(List<Employee> list){
+    public static List<EmployeeView> toViewList(List<Employee> list){
         List<EmployeeView> evs = new ArrayList<>();
         for (Employee e : list) {
             evs.add(toView(e));
