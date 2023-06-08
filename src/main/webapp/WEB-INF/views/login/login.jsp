@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="constants.AttributeConst" %>
 <%@ page import="constants.ForwardConst" %>
 
@@ -25,7 +25,7 @@
             <br /><br />
 
             <label for="${AttributeConst.EMP_PASS.getValue()}">パスワード</label><br />
-            <input type="password" name="${AttributeConst.EMP_PASS.getValue()}"id="${AttributeConst.EMP_PASS.getValue()}" />
+            <input type="password" name="${AttributeConst.EMP_PASS.getValue()}" id="${AttributeConst.EMP_PASS.getValue()}" />
             <br /><br />
 
             <input type="hidden" name="${AttributeConst.TOKEN.getValue()}" value="${_token}" />
