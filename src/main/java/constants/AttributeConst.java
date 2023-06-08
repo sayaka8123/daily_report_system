@@ -4,8 +4,8 @@ package constants;
  * 画面の項目値等を定義するEnumクラス
  *
  */
-
 public enum AttributeConst {
+
     //フラッシュメッセージ
     FLUSH("flush"),
 
@@ -18,6 +18,9 @@ public enum AttributeConst {
     ERR("errors"),
 
     //ログイン中の従業員
+    LOGIN_EMP("login_employee"),
+
+    //ログイン画面
     LOGIN_ERR("loginError"),
 
     //従業員管理
@@ -56,7 +59,7 @@ public enum AttributeConst {
     }
 
     private AttributeConst(final Integer i) {
-        this.text= null;
+        this.text = null;
         this.i = i;
     }
 

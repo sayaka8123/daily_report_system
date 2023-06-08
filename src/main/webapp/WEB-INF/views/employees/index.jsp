@@ -4,9 +4,9 @@
 <%@ page import="constants.ForwardConst" %>
 
 <c:set var="actEmp" value="${ForwardConst.ACT_EMP.getValue()}" />
-<c:set var="commShow" value="${ForwardConst.CMD_SHOW.getValue() }" />
-<c:set var="commNew" value="${ForwardConst.CMD_NEW.getValue() }" />
-<c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue() }" />
+<c:set var="commShow" value="${ForwardConst.CMD_SHOW.getValue()}" />
+<c:set var="commNew" value="${ForwardConst.CMD_NEW.getValue()}" />
+<c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
 
 <c:import url="../layout/app.jsp">
     <c:param name="content">
@@ -25,27 +25,29 @@
                 </tr>
                 <c:forEach var="employee" items="${employees}" varStatus="status">
                     <tr class="row${status.count % 2}">
-                        <td><c:out value="${employee.code}"/></td>
-                        <td><c:out value="${employee.name}"/></td>
+                        <td><c:out value="${employee.code}" /></td>
+                        <td><c:out value="${employee.name}" /></td>
                         <td>
                             <c:choose>
-                                <c:when test="${employee.deleteFlag == AttributeConst.DEL_FLAG_TRUE.getInterValue()}">
-                                    (削除済み)
+                                <c:when test="${employee.deleteFlag == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()}">
+                                    （削除済み）
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="<c:url value='?action=${actEMP}&command=${commShow}&id=${employee.id}' />">詳細を見る</a>
+                                    <a href="<c:url value='?action=${actEmp}&command=${commShow}&id=${employee.id}' />">詳細を見る</a>
                                 </c:otherwise>
                             </c:choose>
+                        </td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
+
         <div id="pagination">
-            （全 ${employees_count}件）<br/>
-            <c:forEach var="i" begin="1" end="${((employees_count - 1) / maxRow) + 1 }" step="1">
+            （全 ${employees_count} 件）<br />
+            <c:forEach var="i" begin="1" end="${((employees_count - 1) / maxRow) + 1}" step="1">
                 <c:choose>
                     <c:when test="${i == page}">
-                        <c:out value="${i}"/>&nbsp;
+                        <c:out value="${i}" />&nbsp;
                     </c:when>
                     <c:otherwise>
                         <a href="<c:url value='?action=${actEmp}&command=${commIdx}&page=${i}' />"><c:out value="${i}" /></a>&nbsp;

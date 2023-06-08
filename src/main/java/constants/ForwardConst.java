@@ -1,7 +1,7 @@
 package constants;
 
 /**
- * リクエストパラメータの変数名、変数値、jspファイルの名前変更等画面緯線にかかわる値を定義するEnumクラス
+ * リクエストパラメーターの変数名、変数値、jspファイルの名前等画面遷移に関わる値を定義するEnumクラス
  *
  */
 public enum ForwardConst {
@@ -48,18 +48,15 @@ public enum ForwardConst {
     /**
      * コンストラクタ
      */
-
     private ForwardConst(final String text) {
         this.text = text;
     }
 
     /**
-     * 値（文字列）取得
+     * 値(文字列)取得
      */
-
     public String getValue() {
         return this.text;
-
     }
 
 }
