@@ -6,6 +6,7 @@
 <c:set var="actTop" value="${ForwardConst.ACT_TOP.getValue()}" />
 <c:set var="actEmp" value="${ForwardConst.ACT_EMP.getValue()}" />
 <c:set var="actRep" value="${ForwardConst.ACT_REP.getValue()}" />
+
 <c:set var="commShow" value="${ForwardConst.CMD_SHOW.getValue()}" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
 <c:set var="commNew" value="${ForwardConst.CMD_NEW.getValue()}" />
@@ -18,7 +19,7 @@
             </div>
         </c:if>
         <h2>日報管理システムへようこそ</h2>
-        <h3>[自分の日報　一覧]</h3>
+        <h3>【自分の日報　一覧】</h3>
         <table id="report_list">
             <tbody>
                 <tr>
@@ -39,7 +40,7 @@
             </tbody>
         </table>
 
-         <div id="pagination">
+        <div id="pagination">
             （全 ${reports_count} 件）<br />
             <c:forEach var="i" begin="1" end="${((reports_count - 1) / maxRow) + 1}" step="1">
                 <c:choose>
