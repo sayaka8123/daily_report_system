@@ -35,7 +35,7 @@
                         <td class="report_title">${report.title}</td>
                         <td class="report_action"><a href="<c:url value='?action=${actRep}&command=${commShow}&id=${report.id}' />">詳細を見る</a></td>
                         <td class="report_like">
-                            <form method="POST" action="/daily_report_system/actions/?action=Like&command=create">
+                            <form method="POST" action="/daily_report_system/?action=Like&command=create">
                                <button type="submit">いいね！</button>
                             </form>
                         </td>
