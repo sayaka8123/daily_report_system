@@ -7,6 +7,10 @@ import javax.servlet.ServletException;
  * いいね処理を行うActionクラス
  */
 
+import actions.views.EmployeeView;
+import constants.AttributeConst;
+import constants.JpaConst;
+
 public class LikeAction extends ActionBase {
 
 
@@ -20,11 +24,13 @@ public class LikeAction extends ActionBase {
      * いいね！を行う
      */
     public void create() throws ServletException, IOException {
-
-
         System.out.println("いいね");
-        String l = request.getParameter("Like");
-        request.setAttribute("Like", l);
+
+        //セッションからログイン中の従業員情報を取得
+        EmployeeView ev = (EmployeeView)getSessionScope(AttributeConst.LOGIN_EMP);
+
+        System.out.println(JpaConst.EMP_COL_NAME);
+
 
 
 

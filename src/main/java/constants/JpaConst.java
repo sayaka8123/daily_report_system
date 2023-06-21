@@ -44,7 +44,7 @@ public interface JpaConst {
     String TABLE_LIK = "likes"; //テーブル名
     //いいねテーブルカラム
     String LIK_COL_ID = "id"; //id
-    String LIK_COL_REP = "_id"; //いいねを押された日報のid
+    String LIK_COL_REP = "report_id"; //いいねを押された日報のid
 
 
     //Entity名
