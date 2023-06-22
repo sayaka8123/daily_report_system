@@ -9,7 +9,6 @@ import javax.servlet.ServletException;
 
 import actions.views.EmployeeView;
 import constants.AttributeConst;
-import constants.JpaConst;
 
 public class LikeAction extends ActionBase {
 
@@ -28,22 +27,17 @@ public class LikeAction extends ActionBase {
 
         //セッションからログイン中の従業員情報を取得
         EmployeeView ev = (EmployeeView)getSessionScope(AttributeConst.LOGIN_EMP);
-
-        System.out.println(JpaConst.EMP_COL_NAME);
-
+        System.out.println(ev.getName());
 
 
 
 
-
-
-
-       /* RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/reports/index.jsp");
-        rd.forward(request, response);
+        int reportId = Integer.parseInt(getRequestParam(AttributeConst.REP_ID));
+        System.out.println(reportId);
 
 
                 //一覧画面にリダイレクト
-                redirect(ForwardConst.ACT_REP, ForwardConst.CMD_INDEX);*/
+               // redirect(ForwardConst.ACT_REP, ForwardConst.CMD_INDEX);
 
     }
 
