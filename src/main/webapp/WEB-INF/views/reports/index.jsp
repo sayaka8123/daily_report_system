@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="constants.ForwardConst" %>
+<%@ page import="constants.AttributeConst" %>
+
 
 <c:set var="actRep" value="${ForwardConst.ACT_REP.getValue()}" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
@@ -36,7 +38,7 @@
                         <td class="report_action"><a href="<c:url value='?action=${actRep}&command=${commShow}&id=${report.id}' />">詳細を見る</a></td>
                         <td class="report_like">
                             <form method="POST" action="/daily_report_system/?action=Like&command=create">
-                            <input type="hidden" name="${AttributeConst.REP_ID.getValue()}" value="${report.id}" />
+                               <input type="hidden" name="${AttributeConst.REP_ID.getValue()}" value="${report.id}" />
                                <button type="submit">いいね！</button>
                             </form>
                         </td>

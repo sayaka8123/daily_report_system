@@ -23,7 +23,7 @@ import lombok.Setter;
  * いいねデータのDTOモデル
  *
  */
-@Table(name = JpaConst.TABLE_LIK)
+@Table(name = JpaConst.TABLE_LIKE)
 @NamedQueries({
     @NamedQuery(
             name = JpaConst.Q_LIK_COUNT_ALL,
@@ -40,7 +40,7 @@ public class Like {
      * id
      */
     @Id
-    @Column(name = JpaConst.LIK_COL_ID)
+    @Column(name = JpaConst.LIKE_COL_ID)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -55,13 +55,13 @@ public class Like {
      * いいねされたレポート
      */
     @ManyToOne
-    @JoinColumn(name = JpaConst.LIK_COL_REP, nullable = false)
+    @JoinColumn(name = JpaConst.LIKE_COL_REP, nullable = false)
     private Report report;
 
     /**
      * 登録日時
      */
-    @Column(name = JpaConst.REP_COL_CREATED_AT, nullable = false)
+    @Column(name = JpaConst.LIKE_COL_CREATED_AT, nullable = false)
     private LocalDateTime createdAt;
 
 

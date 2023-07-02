@@ -1,5 +1,6 @@
 package constants;
 
+
 /**
  * DB関連の項目値を定義するインターフェース
  * ※インターフェイスに定義した変数は public static final 修飾子がついているとみなされる
@@ -41,16 +42,17 @@ public interface JpaConst {
     String REP_COL_UPDATED_AT = "updated_at"; //更新日時
 
     //いいねテーブル
-    String TABLE_LIK = "likes"; //テーブル名
+    String TABLE_LIKE = "likes"; //テーブル名
     //いいねテーブルカラム
-    String LIK_COL_ID = "id"; //id
-    String LIK_COL_REP = "report_id"; //いいねを押された日報のid
+    String LIKE_COL_ID = "id"; //id
+    String LIKE_COL_REP = "report_id"; //いいねを押された日報のid
+    String LIKE_COL_CREATED_AT = "created_at";//登録日時
 
 
     //Entity名
     String ENTITY_EMP = "employee"; //従業員
     String ENTITY_REP = "report"; //日報
-    String ENTITY_LIK = "like"; //いいね
+    String ENTITY_LIKE = "like"; //いいね
 
 
     //JPQL内パラメータ
@@ -85,7 +87,7 @@ public interface JpaConst {
     String Q_REP_COUNT_ALL_MINE = ENTITY_REP + ".countAllMine";
     String Q_REP_COUNT_ALL_MINE_DEF = "SELECT COUNT(r) FROM Report AS r WHERE r.employee = :" + JPQL_PARM_EMPLOYEE;
     //指定したレポートがいいねされた数を取得する
-    String Q_LIK_COUNT_ALL = ENTITY_LIK + ".countlike";
+    String Q_LIK_COUNT_ALL = ENTITY_LIKE + ".countlike";
     String Q_LIK_COUNT_ALL_DEF = "SELECT COUNT(l) FROM Like AS l WHERE l.report= :" + JPQL_PARM_EMPLOYEE;
 
 

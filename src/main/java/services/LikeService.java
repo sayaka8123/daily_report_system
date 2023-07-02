@@ -1,17 +1,34 @@
 package services;
 
-import constants.JpaConst;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import models.Like;
 
 public class LikeService extends ServiceBase {
 
     /**
-     * いいねテーブルのデータの件数を取得し、返却する
-     * @return データの件数
+     * 画面から入力されたいいねの登録内容を元にデータを1件作成し、いいねテーブルに登録する
+     * @param like  いいねの登録内容
      */
-    public long countAll() {
-        long like_count = (long) em.createNamedQuery(JpaConst.Q_REP_COUNT, Long.class)
-                .getSingleResult();
-        return like_count;
-        }
+    public List<String> create(Like like) {
+        //日報情報登録
+        List<String> likes = new ArrayList<String>();
+        LocalDateTime ldt = LocalDateTime.now();
+        like.setCreatedAt(ldt);
+        createInternal(like);
+        return likes;
+    }
+
+    /**
+     * いいねデータを1件登録する
+     * @param rv いいねデータ
+     */
+    private void createInternal(Like like) {
+        em.getTransaction().begin();
+        em.persist(like);
+        em.getTransaction().commit();
+    }
 
 }
