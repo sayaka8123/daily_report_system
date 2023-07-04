@@ -42,7 +42,7 @@
                                <button type="submit">いいね！</button>
                             </form>
                         </td>
-                        <td class="report_like_count">1</td>
+                        <td class="report_like_count">${like[report.id]}</td>
                     </tr>
                 </c:forEach>
             </tbody>

@@ -2,6 +2,7 @@ package actions;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,6 +13,8 @@ import constants.AttributeConst;
 import constants.ForwardConst;
 import constants.JpaConst;
 import constants.MessageConst;
+import models.Report;
+import services.LikeService;
 import services.ReportService;
 /**
  * 日報に関する処理を行うActionクラス
@@ -19,6 +22,7 @@ import services.ReportService;
  */
 public class ReportAction extends ActionBase {
     private ReportService service;
+    private LikeService like_service;
 
     /**
      * メソッドを実行する
@@ -26,11 +30,14 @@ public class ReportAction extends ActionBase {
     @Override
     public void process() throws ServletException, IOException {
         service = new ReportService();
+        like_service = new LikeService();
 
         //メソッドを実行
         invoke();
         service.close();
+        like_service.close();
     }
+
     /**
      * 一覧画面を表示する
      * @throws ServletException
@@ -48,6 +55,17 @@ public class ReportAction extends ActionBase {
         putRequestScope(AttributeConst.REP_COUNT, reportsCount); //全ての従業員データの件数
         putRequestScope(AttributeConst.PAGE, page); //ページ数
         putRequestScope(AttributeConst.MAX_ROW, JpaConst.ROW_PER_PAGE); //1ページに表示するレコードの数
+
+        HashMap<Integer, Long> hm = new HashMap<Integer, Long>();
+
+        //いいねされた日報の一覧を取得
+        List<Report> like_reports = like_service.getAllreportId();
+        for(Report report : like_reports) {
+            long likesCount = like_service.countAll(report);
+            hm.put(report.getId(), likesCount);
+        }
+
+        putRequestScope(AttributeConst.LIKE, hm); //いいね数データ
 
         //セッションにフラッシュメッセージが設定されている場合はリクエストスコープに移し替え、セッションからは削除する
         String flush = getSessionScope(AttributeConst.FLUSH);

@@ -59,6 +59,8 @@ public interface JpaConst {
     String JPQL_PARM_CODE = "code"; //社員番号
     String JPQL_PARM_PASSWORD = "password"; //パスワード
     String JPQL_PARM_EMPLOYEE = "employee"; //従業員
+    String JPQL_PARM_REP= "report"; //日報
+
 
 
     //NamedQueryの nameとquery
@@ -86,9 +88,12 @@ public interface JpaConst {
     //指定した従業員が作成した日報の件数を取得する
     String Q_REP_COUNT_ALL_MINE = ENTITY_REP + ".countAllMine";
     String Q_REP_COUNT_ALL_MINE_DEF = "SELECT COUNT(r) FROM Report AS r WHERE r.employee = :" + JPQL_PARM_EMPLOYEE;
-    //指定したレポートがいいねされた数を取得する
-    String Q_LIK_COUNT_ALL = ENTITY_LIKE + ".countlike";
-    String Q_LIK_COUNT_ALL_DEF = "SELECT COUNT(l) FROM Like AS l WHERE l.report= :" + JPQL_PARM_EMPLOYEE;
+    //指定した日報のいいねされた数を取得する
+    String Q_LIKE_COUNT_ALL = ENTITY_LIKE + ".countAll";
+    String Q_LIKE_COUNT_ALL_DEF = "SELECT COUNT(l) FROM Like AS l WHERE l.report= :" + JPQL_PARM_REP;
+    //全てのいいねをidの降順に取得する
+    String Q_LIKE_GET_ALL = ENTITY_LIKE + ".getAll";
+    String Q_LIKE_GET_ALL_DEF = "SELECT r FROM Like AS r ORDER BY r.id DESC";
 
 
 
